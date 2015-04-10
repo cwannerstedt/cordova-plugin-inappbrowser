@@ -646,7 +646,7 @@ public class InAppBrowser extends CordovaPlugin {
                 });
 
                 // WebView
-                inAppWebView = new WebView(cordova.getActivity());
+                inAppWebView = new LudeiWebView(cordova.getActivity());
                 inAppWebView.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
                 inAppWebView.setWebChromeClient(new InAppChromeClient(thatWebView));
                 WebViewClient client = new InAppBrowserClient(thatWebView, edittext);
