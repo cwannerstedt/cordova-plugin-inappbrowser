@@ -77,6 +77,7 @@ public class InAppBrowser extends CordovaPlugin {
     private static final String EXIT_EVENT = "exit";
     private static final String LOCATION = "location";
     private static final String TOOLBAR = "toolbar";
+    private static final String NAVIGATION = "navigation";
     private static final String HIDDEN = "hidden";
     private static final String LOAD_START_EVENT = "loadstart";
     private static final String LOAD_STOP_EVENT = "loadstop";
@@ -90,6 +91,7 @@ public class InAppBrowser extends CordovaPlugin {
     private CallbackContext callbackContext;
     private boolean showLocationBar = true;
     private boolean showToolBar = true;
+    private boolean showNavigation = true;
     private boolean openWindowHidden = false;
     private boolean clearAllCache= false;
     private boolean clearSessionCache=false;
@@ -103,6 +105,7 @@ public class InAppBrowser extends CordovaPlugin {
      * @return              A PluginResult object with a status and message.
      */
     public boolean execute(String action, CordovaArgs args, final CallbackContext callbackContext) throws JSONException {
+
         if (action.equals("open")) {
             this.callbackContext = callbackContext;
             final String url = args.getString(0);
@@ -448,6 +451,16 @@ public class InAppBrowser extends CordovaPlugin {
     }
 
 
+    /**
+     * Should we show the navigation buttons?
+     *
+     * @return boolean
+     */
+    private boolean getShowNavigation() {
+        return this.showNavigation;
+    }
+
+
     private InAppBrowser getInAppBrowser(){
         return this;
     }
@@ -462,6 +475,7 @@ public class InAppBrowser extends CordovaPlugin {
         // Determine if we should hide the location bar.
         showLocationBar = true;
         showToolBar = true;
+        showNavigation = true;
         openWindowHidden = false;
         if (features != null) {
             Boolean show = features.get(LOCATION);
@@ -471,6 +485,10 @@ public class InAppBrowser extends CordovaPlugin {
             Boolean showTool = features.get(TOOLBAR);
             if (showTool != null) {
                 showToolBar = showTool.booleanValue();
+            }
+            Boolean showNav = features.get(NAVIGATION);
+            if (showNav != null) {
+                showNavigation = showNav.booleanValue();
             }
             Boolean hidden = features.get(HIDDEN);
             if (hidden != null) {
@@ -486,7 +504,7 @@ public class InAppBrowser extends CordovaPlugin {
                 }
             }
         }
-        
+
         final CordovaWebView thatWebView = this.webView;
 
         // Create dialog in new thread
@@ -662,9 +680,12 @@ public class InAppBrowser extends CordovaPlugin {
                 inAppWebView.requestFocus();
                 inAppWebView.requestFocusFromTouch();
 
-                // Add the back and forward buttons to our action button container layout
-                actionButtonContainer.addView(back);
-                actionButtonContainer.addView(forward);
+                // Add the back and forward buttons to our action button container layout,
+                // but only if the navigation is not disabled
+                if (getShowNavigation()) {
+                    actionButtonContainer.addView(back);
+                    actionButtonContainer.addView(forward);
+                }
 
                 // Add the views to our toolbar
                 toolbar.addView(actionButtonContainer);
