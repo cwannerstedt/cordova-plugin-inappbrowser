@@ -40,10 +40,10 @@ InAppBrowser.prototype = {
         }
     },
     close: function (eventname) {
-        exec(null, null, "InAppBrowser", "close", []);
+        exec(function(){}, function(){}, "InAppBrowser", "close", []);
     },
     show: function (eventname) {
-      exec(null, null, "InAppBrowser", "show", []);
+      exec(function(){}, function(){}, "InAppBrowser", "show", []);
     },
     addEventListener: function (eventname,f) {
         if (eventname in this.channels) {

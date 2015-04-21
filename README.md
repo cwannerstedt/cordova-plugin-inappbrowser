@@ -19,4 +19,9 @@
 
 # org.apache.cordova.inappbrowser
 
-Plugin documentation: [doc/index.md](doc/index.md)
+Original Plugin documentation: [doc/index.md](doc/index.md)
+
+## WIP
+0.5.6-dev: Replaced the WebView for android with the XWalkView available in cordova android 4.0.0+
+
+This plugin should be considered as work in progress
