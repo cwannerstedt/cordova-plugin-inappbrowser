@@ -2,15 +2,8 @@
   "name": "customized-inappbrowser",
   "version": "0.6.0-dev",
   "description": "Customized Cordova InAppBrowser Plugin",
-  "repo": "git@github.com:cwannerstedt/cordova-plugin-inappbrowser.git",
-  "keywords": [
-    "cordova",
-    "inappbrowser"
-  ],
-  "author": "Apache Software Foundation",
-  "license": "Apache 2.0",
   "cordova": {
-    "id": "inappbrowser",
+    "id": "customized-inappbrowser",
     "platforms": [
       "android",
       "amazon-fireos",
@@ -22,6 +15,26 @@
       "windows",
       "firefoxos"
     ]
+  },
+  "keywords": [
+    "cordova",
+    "inappbrowser",
+    "ecosystem:cordova",
+    "cordova-firefoxos",
+    "cordova-android",
+    "cordova-amazon-fireos",
+    "cordova-ubuntu",
+    "cordova-ios",
+    "cordova-wp7",
+    "cordova-wp8",
+    "cordova-windows8",
+    "cordova-windows"
+  ],
+  "author": "Apache Software Foundation",
+  "license": "Apache 2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cwannerstedt/cordova-plugin-inappbrowser.git"
   },
   "engines": [
     {
