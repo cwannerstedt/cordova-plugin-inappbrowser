@@ -1,5 +1,5 @@
 {
-  "name": "InAppBrowser",
+  "name": "customized-inappbrowser",
   "version": "0.6.0-dev",
   "description": "Customized Cordova InAppBrowser Plugin",
   "repo": "git@github.com:cwannerstedt/cordova-plugin-inappbrowser.git",
