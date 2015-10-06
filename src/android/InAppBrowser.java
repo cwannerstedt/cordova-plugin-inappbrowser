@@ -652,9 +652,9 @@ public class InAppBrowser extends CordovaPlugin {
                 });
 
                 // WebView
-                inAppWebView = new XWalkView(cordova.getActivity().getApplicationContext() , cordova.getActivity());
+                inAppWebView = new XWalkView(cordova.getActivity() , cordova.getActivity());
 
-                XWalkResourceClient client = new InAppBrowserClient(thatWebView, inAppWebView);
+                XWalkResourceClient client = new InAppBrowserClient(inAppWebView);
                 inAppWebView.setResourceClient(client);
 
                  if (clearAllCache) {
@@ -745,8 +745,7 @@ public class InAppBrowser extends CordovaPlugin {
          * @param mContext
          * @param edittext
          */
-        //public InAppBrowserClient(CordovaWebView webView, EditText mEditText) {
-        public InAppBrowserClient(CordovaWebView cordovaView, XWalkView webView) {
+        public InAppBrowserClient(XWalkView webView) {
             super(webView);
         }
 
